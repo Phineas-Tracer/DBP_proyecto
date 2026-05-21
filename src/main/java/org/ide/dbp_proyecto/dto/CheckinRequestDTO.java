@@ -3,7 +3,7 @@ package org.ide.dbp_proyecto.dto;
 import jakarta.validation.constraints.NotNull;
 
 public record CheckinRequestDTO(
-    Long id,
+    Long poiId,
     @NotNull Double latitudUsuario,
     @NotNull Double longitudUsuario
 ) {
