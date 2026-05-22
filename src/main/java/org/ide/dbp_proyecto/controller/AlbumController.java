@@ -1,18 +1,19 @@
 package org.ide.dbp_proyecto.controller;
 
-import org.ide.dbp_proyecto.Temporales.Usuario;
 import org.ide.dbp_proyecto.dto.CheckinRequestDTO;
 import org.ide.dbp_proyecto.dto.CheckinResponseDTO;
+import org.ide.dbp_proyecto.dto.LugarColeccionadoDTO;
+import org.ide.dbp_proyecto.entity.User;
 import org.ide.dbp_proyecto.repository.LugarColeccionadoRepository;
 import org.ide.dbp_proyecto.service.AlbumService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.function.EntityResponse;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/album")
@@ -25,8 +26,14 @@ public class AlbumController {
     }
 
     @PostMapping("/checkin")
-    public ResponseEntity<CheckinResponseDTO> checkin(@RequestBody CheckinRequestDTO dto, Usuario user) {
-        CheckinResponseDTO response = albumService.realizarCheckin(dto, user);
+    public ResponseEntity<CheckinResponseDTO> checkin(@RequestBody CheckinRequestDTO dto, Authentication auth) {
+        CheckinResponseDTO response = albumService.realizarCheckin(dto, auth.getName());
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+    }
+
+    @GetMapping("/mi-coleccion")
+    public ResponseEntity<List<LugarColeccionadoDTO>> getMiColeccion(Authentication auth) {
+        List<LugarColeccionadoDTO> response = albumService.obtenerMiColeccion(auth.getName());
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }
