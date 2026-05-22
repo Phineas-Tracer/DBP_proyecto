@@ -9,5 +9,4 @@ public class DbpProyectoApplication {
     public static void main(String[] args) {
         SpringApplication.run(DbpProyectoApplication.class, args);
     }
-
 }
