@@ -1,9 +1,6 @@
 package org.ide.dbp_proyecto.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,8 +19,14 @@ public class LugarColeccionado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    private String user;
-    private String puntoDeInteres;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "poi_id")
+    private PuntoInteres puntoDeInteres;
+
     private LocalDateTime fecha;
     private Double latitudCheckin;
     private Double longitudCheckin;
