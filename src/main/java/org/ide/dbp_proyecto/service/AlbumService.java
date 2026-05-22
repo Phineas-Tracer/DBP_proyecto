@@ -37,7 +37,8 @@ public class AlbumService {
         }
 
         double distancia = geolocalizacionService.calcularDistancia(dto.latitudUsuario(), dto.longitudUsuario(), poi.getLatitud(), poi.getLongitud());
-
-
+        if (!distancia <= GeolocalizacionService.RADIO_CHECKIN_METROS){
+            throw new 
+        }
     }
 }
