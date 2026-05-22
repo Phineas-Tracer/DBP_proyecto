@@ -6,7 +6,7 @@ public record LugarColeccionadoDTO(
     Long poiId,
     String nombrePoi,
     String categoriaPoi,       // "Cascada", "Gastronomía", etc.
-    String imagenUrlPoi,       // URL de Supabase Storage (del Integrante 3)
+    String imagenUrlPoi,       // URL de Cloudinary
     LocalDateTime fechaVisita,
     Double latitudCheckin,
     Double longitudCheckin

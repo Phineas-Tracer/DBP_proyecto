@@ -29,4 +29,11 @@ public class PuntoInteres {
     @ManyToMany(mappedBy = "puntosDeInteres")
     @JsonIgnore
     private List<Ruta> rutas = new ArrayList<>();
+
+    //Google Places
+    @Column(unique = true)
+    private String googlePlaceId;
+
+    private String direccion;
+
 }
