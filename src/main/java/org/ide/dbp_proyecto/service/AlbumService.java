@@ -1,5 +1,7 @@
 package org.ide.dbp_proyecto.service;
 
+import jakarta.transaction.Transactional;
+import org.ide.dbp_proyecto.exception.CheckinFueraDeRangoException;
 import org.ide.dbp_proyecto.repository.PuntoInteresRepository;
 import org.ide.dbp_proyecto.dto.CheckinRequestDTO;
 import org.ide.dbp_proyecto.dto.CheckinResponseDTO;
@@ -37,6 +39,7 @@ public class AlbumService {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     public CheckinResponseDTO realizarCheckin(CheckinRequestDTO dto, String emailUsuario) {
 
         User usuario = userRepository.findByEmail(emailUsuario)
@@ -51,7 +54,7 @@ public class AlbumService {
 
         double distancia = geolocalizacionService.calcularDistancia(dto.latitudUsuario(), dto.longitudUsuario(), poi.getLatitud(), poi.getLongitud());
         if (distancia > GeolocalizacionService.RADIO_CHECKIN_METROS){
-            throw new ConflictException("Estás a " + Math.round(distancia) + "metros. Debes estar a menos de 50 metros para coleccionar este lugar.");
+            throw new CheckinFueraDeRangoException("Estás a " + Math.round(distancia) + "metros. Debes estar a menos de 50 metros para coleccionar este lugar.");
         }
 
         LugarColeccionado coleccion = new LugarColeccionado();
@@ -64,6 +67,7 @@ public class AlbumService {
         lugarColeccionadoRepository.save(coleccion);
 
         // Mock para el Integrante 5 (Gamificación)
+        // Luego inyectar el real
         List<String> recompensas = new ArrayList<>();
         recompensas.add("Nuevo lugar descubierto: " + poi.getNombre());
 

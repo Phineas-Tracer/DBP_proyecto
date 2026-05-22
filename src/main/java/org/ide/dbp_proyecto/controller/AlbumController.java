@@ -1,22 +1,19 @@
 package org.ide.dbp_proyecto.controller;
 
+import jakarta.validation.Valid;
 import org.ide.dbp_proyecto.dto.CheckinRequestDTO;
 import org.ide.dbp_proyecto.dto.CheckinResponseDTO;
 import org.ide.dbp_proyecto.dto.LugarColeccionadoDTO;
-import org.ide.dbp_proyecto.entity.User;
-import org.ide.dbp_proyecto.repository.LugarColeccionadoRepository;
 import org.ide.dbp_proyecto.service.AlbumService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.function.EntityResponse;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/album")
+@RequestMapping("/api/album")
 public class AlbumController {
 
     private final AlbumService albumService;
@@ -26,7 +23,7 @@ public class AlbumController {
     }
 
     @PostMapping("/checkin")
-    public ResponseEntity<CheckinResponseDTO> checkin(@RequestBody CheckinRequestDTO dto, Authentication auth) {
+    public ResponseEntity<CheckinResponseDTO> checkin(@Valid @RequestBody CheckinRequestDTO dto, Authentication auth) {
         CheckinResponseDTO response = albumService.realizarCheckin(dto, auth.getName());
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
