@@ -1,9 +1,9 @@
 package org.ide.dbp_proyecto.entity;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+import org.ide.dbp_proyecto.Ruta.Dificultad;
+import org.ide.dbp_proyecto.Ruta.TipoPaisaje;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,11 +14,19 @@ public class Ruta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombre;
-
     private Double latitudCentro;
     private Double longitudCentro;
+
+    @Enumerated(EnumType.STRING)
+    private Dificultad dificultad;
+
+    @Enumerated(EnumType.STRING)
+    private TipoPaisaje tipoPaisaje;
+
+    @OneToMany(mappedBy = "ruta", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("orden ASC")
+    private List<Coordenada> trazadoGeografico = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(

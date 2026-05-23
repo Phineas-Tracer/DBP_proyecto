@@ -14,6 +14,7 @@ import org.ide.dbp_proyecto.User.Role;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "usuarios")
 public class User {
 
     @Id
