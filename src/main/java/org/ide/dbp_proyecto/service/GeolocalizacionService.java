@@ -14,6 +14,7 @@ public class GeolocalizacionService {
         double lambda1 = toRadians(lonUsuario);
         double lambda2 = toRadians(lonPoi);
 
+        // Formula de Haversine para hallar la distancia entre dos puntos
         double distancia = 2 * RADIO_TIERRA_METROS * asin(sqrt(
                 pow(sin((phi2 - phi1) / 2), 2) +
                         cos(phi1) * cos(phi2) * pow(sin((lambda2 - lambda1) / 2), 2)

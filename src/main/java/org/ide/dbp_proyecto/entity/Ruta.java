@@ -31,6 +31,9 @@ public class Ruta {
     @OrderBy("orden ASC")
     private List<Coordenada> trazadoGeografico = new ArrayList<>();
 
+    private Double latitudCentro;
+    private Double longitudCentro;
+
     @ManyToMany
     @JoinTable(
             name = "ruta_poi",
