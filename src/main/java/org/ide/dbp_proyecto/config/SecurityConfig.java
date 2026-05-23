@@ -3,6 +3,7 @@ package org.ide.dbp_proyecto.config;
 import lombok.RequiredArgsConstructor;
 import org.ide.dbp_proyecto.jwt.JwtFilter;
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -21,12 +22,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtFilter jwtFilter;
-
-
-    @Bean
-    public ModelMapper modelMapper() {
-        return new ModelMapper();
-    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -48,6 +43,11 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
 
+                // Permitir iframes desde el mismo origen (necesario para H2 console)
+                .headers(headers -> headers
+                        .frameOptions(frame -> frame.disable())
+                )
+
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(
                                 SessionCreationPolicy.STATELESS
@@ -57,6 +57,16 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**")
                         .permitAll()
+
+                        // ⚠️ TEMPORAL — sin auth hasta que el Integrante 1 implemente roles.
+                        // Luego cambiar a .hasRole("ADMIN") o equivalente.
+                        .requestMatchers("/api/admin/**")
+                        .permitAll()
+
+                        // ⚠️ TEMPORAL — consola H2 abierta para desarrollo. Eliminar en producción.
+                        .requestMatchers("/h2-console/**")
+                        .permitAll()
+                        // --------------------------------------------------------
 
                         .anyRequest()
                         .authenticated()
