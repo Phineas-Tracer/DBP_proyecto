@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.ide.dbp_proyecto.Ruta.Dificultad;
 import org.ide.dbp_proyecto.Ruta.TipoPaisaje;
 import org.ide.dbp_proyecto.dto.*;
+import org.ide.dbp_proyecto.entity.Coordenada;
 import org.ide.dbp_proyecto.entity.PuntoInteres;
 import org.ide.dbp_proyecto.entity.Ruta;
 import org.ide.dbp_proyecto.exception.ResourceNotFoundException;
@@ -15,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
