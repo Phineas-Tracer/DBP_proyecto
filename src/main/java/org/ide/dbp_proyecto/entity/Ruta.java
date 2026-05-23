@@ -17,6 +17,9 @@ public class Ruta {
 
     private String nombre;
 
+    private Double latitudCentro;
+    private Double longitudCentro;
+
     @ManyToMany
     @JoinTable(
             name = "ruta_poi",

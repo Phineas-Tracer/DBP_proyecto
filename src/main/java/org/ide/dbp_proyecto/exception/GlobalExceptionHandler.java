@@ -1,6 +1,5 @@
 package org.ide.dbp_proyecto.exception;
 
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -38,4 +37,9 @@ public class GlobalExceptionHandler {
     //public ResponseEntity<String> handleBadCredentials(BadCredentialsException ex) {
     //    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
     //}
+
+    @ExceptionHandler(GooglePlacesException.class)
+    public ResponseEntity<String> handleGooglePlacesError(GooglePlacesException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(ex.getMessage());
+    }
 }
