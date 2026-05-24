@@ -1,13 +1,13 @@
-package org.ide.dbp_proyecto.controller;
+package org.ide.dbp_proyecto.Controller;
 
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.ide.dbp_proyecto.dto.AuthResponse;
-import org.ide.dbp_proyecto.dto.LoginRequest;
-import org.ide.dbp_proyecto.dto.RequestUser;
-import org.ide.dbp_proyecto.dto.ResponseUser;
-import org.ide.dbp_proyecto.service.UserService;
+import org.ide.dbp_proyecto.DTO.AuthResponse;
+import org.ide.dbp_proyecto.DTO.LoginRequest;
+import org.ide.dbp_proyecto.DTO.RequestUser;
+import org.ide.dbp_proyecto.DTO.ResponseUser;
+import org.ide.dbp_proyecto.Service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;

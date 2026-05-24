@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.dto;
+package org.ide.dbp_proyecto.DTO;
 
 import java.time.LocalDateTime;
 

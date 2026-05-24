@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.dto;
+package org.ide.dbp_proyecto.DTO;
 
 public record SugerenciaPoiDTO(
         String googlePlaceId,

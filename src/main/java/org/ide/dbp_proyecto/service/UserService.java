@@ -1,15 +1,15 @@
-package org.ide.dbp_proyecto.service;
+package org.ide.dbp_proyecto.Service;
 
 
 import lombok.RequiredArgsConstructor;
 import org.ide.dbp_proyecto.User.Role;
-import org.ide.dbp_proyecto.repository.UserRepository;
+import org.ide.dbp_proyecto.Repository.UserRepository;
 import org.ide.dbp_proyecto.entity.User;
 import org.springframework.security.core.Authentication;
-import org.ide.dbp_proyecto.dto.AuthResponse;
-import org.ide.dbp_proyecto.dto.LoginRequest;
-import org.ide.dbp_proyecto.dto.RequestUser;
-import org.ide.dbp_proyecto.dto.ResponseUser;
+import org.ide.dbp_proyecto.DTO.AuthResponse;
+import org.ide.dbp_proyecto.DTO.LoginRequest;
+import org.ide.dbp_proyecto.DTO.RequestUser;
+import org.ide.dbp_proyecto.DTO.ResponseUser;
 import org.ide.dbp_proyecto.exception.UserExitsException;
 import org.ide.dbp_proyecto.jwt.JwtService;
 import org.modelmapper.ModelMapper;
@@ -48,7 +48,8 @@ public class UserService {
         User user = modelMapper.map(requestUser, User.class);
 
         user.setPassword(
-                passwordEncoder.encode(requestUser.getPassword())
+                passwordEncoder.encode(
+                        requestUser.getPassword())
         );
         user.setRole(Role.USER);
         userRepository.save(user);

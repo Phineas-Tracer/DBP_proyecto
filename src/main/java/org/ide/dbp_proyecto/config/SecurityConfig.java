@@ -55,7 +55,10 @@ public class SecurityConfig {
                 )
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**")
+                        .requestMatchers(
+                                "/user/login",
+                                "/user/register"
+                        )
                         .permitAll()
 
                         // ⚠️ TEMPORAL — sin auth hasta que el Integrante 1 implemente roles.

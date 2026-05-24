@@ -9,11 +9,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.ide.dbp_proyecto.User.Role;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name="users")
 public class User {
 
     @Id
@@ -33,5 +37,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-
+    @ManyToMany
+    @JoinTable(name = "user_recompensas",
+    joinColumns = @JoinColumn(name = "user_id"),
+    inverseJoinColumns = @JoinColumn(name = "recompensa_id"))
+    private List<Recompensa> recompensas = new ArrayList<>();
 }

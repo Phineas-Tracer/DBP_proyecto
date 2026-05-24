@@ -1,8 +1,8 @@
-package org.ide.dbp_proyecto.controller;
+package org.ide.dbp_proyecto.Controller;
 
 import lombok.RequiredArgsConstructor;
 import org.ide.dbp_proyecto.entity.PuntoInteres;
-import org.ide.dbp_proyecto.service.PoiService;
+import org.ide.dbp_proyecto.Service.PoiService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

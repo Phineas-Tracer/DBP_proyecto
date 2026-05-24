@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.dto.google;
+package org.ide.dbp_proyecto.DTO.google;
 
 import java.util.List;
 

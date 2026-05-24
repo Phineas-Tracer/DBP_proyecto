@@ -1,9 +1,10 @@
-package org.ide.dbp_proyecto.service;
+package org.ide.dbp_proyecto.Service;
 
 import lombok.RequiredArgsConstructor;
-import org.ide.dbp_proyecto.repository.CategoriaRepository;
-import org.ide.dbp_proyecto.repository.PuntoInteresRepository;
-import org.ide.dbp_proyecto.repository.RutaRepository;
+import org.ide.dbp_proyecto.Service.CloudinaryService;
+import org.ide.dbp_proyecto.Repository.CategoriaRepository;
+import org.ide.dbp_proyecto.Repository.PuntoInteresRepository;
+import org.ide.dbp_proyecto.Repository.RutaRepository;
 import org.ide.dbp_proyecto.entity.Categoria;
 import org.ide.dbp_proyecto.entity.PuntoInteres;
 import org.ide.dbp_proyecto.entity.Ruta;

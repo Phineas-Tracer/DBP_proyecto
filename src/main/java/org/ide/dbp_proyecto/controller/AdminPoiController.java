@@ -1,7 +1,7 @@
-package org.ide.dbp_proyecto.controller;
+package org.ide.dbp_proyecto.Controller;
 
-import org.ide.dbp_proyecto.dto.ImportacionPoiResponseDto;
-import org.ide.dbp_proyecto.service.PoiImportService;
+import org.ide.dbp_proyecto.DTO.ImportacionPoiResponseDto;
+import org.ide.dbp_proyecto.Service.PoiImportService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

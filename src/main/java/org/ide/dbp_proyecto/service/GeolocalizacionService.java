@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.service;
+package org.ide.dbp_proyecto.Service;
 import static java.lang.Math.*;
 
 import org.springframework.stereotype.Service;

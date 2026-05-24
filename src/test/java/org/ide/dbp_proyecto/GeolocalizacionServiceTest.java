@@ -1,6 +1,6 @@
 package org.ide.dbp_proyecto;
 
-import org.ide.dbp_proyecto.service.GeolocalizacionService;
+import org.ide.dbp_proyecto.Service.GeolocalizacionService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
