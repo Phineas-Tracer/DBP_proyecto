@@ -20,6 +20,7 @@ import org.ide.dbp_proyecto.exception.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -30,9 +31,9 @@ public class RecompensaService {
     private final DesafioRepository desafioRepository;
     private final UserRepository userRepository;
 
-    public RewardResponseDTO createRecompensa(RewardRequestDTO request, User usuario) {
-        if (usuario == null)
-            throw new BadCredentialsException("Usuario no autenticado");
+    public RewardResponseDTO createRecompensa(RewardRequestDTO request, String email) {
+        User usuario = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         if (usuario.getRole()!= Role.ADMIN)
             throw new AccessDeniedException("No tienes permisos para crear recompensas");
         if (repository.existsByName(request.getName()))
@@ -46,9 +47,9 @@ public class RecompensaService {
         return convertirEntidadADto(response);
     }
 
-    public Page<RewardResponseDTO> getMyRewards(User usuario, Pageable pageable) {
-        if (usuario == null)
-            throw new BadCredentialsException("Usuario no autenticado");
+    public Page<RewardResponseDTO> getMyRewards(String email, Pageable pageable) {
+        User usuario = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         User user = userRepository.findById(usuario.getId()).orElseThrow(()-> new ResourceNotFoundException("Usuario no encontrado"));
         Page<Recompensa> rewardsPage = repository.findByUsuariosContains(user, pageable);
         return rewardsPage.map(this::convertirEntidadADto);

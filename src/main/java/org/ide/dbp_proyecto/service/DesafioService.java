@@ -6,12 +6,15 @@ import org.ide.dbp_proyecto.DTO.DesafioResponseDTO;
 import org.ide.dbp_proyecto.DTO.PlanificacionRequestDTO;
 import org.ide.dbp_proyecto.DTO.PlanificacionResponseDTO;
 import org.ide.dbp_proyecto.Repository.DesafioRepository;
+import org.ide.dbp_proyecto.Repository.UserRepository;
+import org.ide.dbp_proyecto.User.Role;
 import org.ide.dbp_proyecto.entity.Desafio;
 import org.ide.dbp_proyecto.entity.Planificacion;
 import org.ide.dbp_proyecto.entity.User;
 import org.ide.dbp_proyecto.exception.BadCredentialsException;
 import org.ide.dbp_proyecto.exception.ConflictException;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,10 +22,13 @@ import org.springframework.stereotype.Service;
 public class DesafioService {
     private final DesafioRepository repository;
     private final ModelMapper modelMapper;
+    private final UserRepository userRepository;
 
-    public DesafioResponseDTO createReto(DesafioRequestDTO request, User usuario) {
-        if (usuario == null)
-            throw new BadCredentialsException("Usuario no autenticado");
+    public DesafioResponseDTO createReto(DesafioRequestDTO request, String email) {
+        User usuario = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+        if(usuario.getRole() != Role.ADMIN)
+            throw new BadCredentialsException("No tienes permisos");
         if (repository.existsByTitleAndUsuario(request.getTitle(), usuario))
             throw new ConflictException("Ya existe un Desafio con características similares");
         Desafio reto = convertirDtoAEntidad(request);
