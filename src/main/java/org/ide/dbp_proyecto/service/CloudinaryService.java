@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.Service;
+package org.ide.dbp_proyecto.service;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;

@@ -1,7 +1,7 @@
-package org.ide.dbp_proyecto.Controller;
+package org.ide.dbp_proyecto.controller;
 
-import org.ide.dbp_proyecto.DTO.SugerenciaPoiDTO;
-import org.ide.dbp_proyecto.Service.PoiImportService;
+import org.ide.dbp_proyecto.dto.SugerenciaPoiDTO;
+import org.ide.dbp_proyecto.service.PoiImportService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

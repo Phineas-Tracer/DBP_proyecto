@@ -1,11 +1,11 @@
-package org.ide.dbp_proyecto.Service;
+package org.ide.dbp_proyecto.service;
 
-import org.ide.dbp_proyecto.Service.GooglePlacesService;
-import org.ide.dbp_proyecto.DTO.SugerenciaPoiDTO;
+import org.ide.dbp_proyecto.service.GooglePlacesService;
+import org.ide.dbp_proyecto.dto.SugerenciaPoiDTO;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.ide.dbp_proyecto.DTO.ImportacionPoiResponseDto;
-import org.ide.dbp_proyecto.DTO.google.GooglePlaceDto;
+import org.ide.dbp_proyecto.dto.ImportacionPoiResponseDto;
+import org.ide.dbp_proyecto.dto.google.GooglePlaceDto;
 import org.ide.dbp_proyecto.entity.Categoria;
 import org.ide.dbp_proyecto.entity.PuntoInteres;
 import org.ide.dbp_proyecto.entity.Ruta;

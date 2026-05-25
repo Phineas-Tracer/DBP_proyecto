@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.DTO;
+package org.ide.dbp_proyecto.dto;
 
 import lombok.Getter;
 import lombok.Setter;

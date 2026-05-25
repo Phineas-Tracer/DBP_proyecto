@@ -1,12 +1,12 @@
-package org.ide.dbp_proyecto.Service;
+package org.ide.dbp_proyecto.service;
 
 import jakarta.transaction.Transactional;
 import org.ide.dbp_proyecto.Service.GeolocalizacionService;
 import org.ide.dbp_proyecto.exception.CheckinFueraDeRangoException;
 import org.ide.dbp_proyecto.Repository.PuntoInteresRepository;
-import org.ide.dbp_proyecto.DTO.CheckinRequestDTO;
-import org.ide.dbp_proyecto.DTO.CheckinResponseDTO;
-import org.ide.dbp_proyecto.DTO.LugarColeccionadoDTO;
+import org.ide.dbp_proyecto.dto.CheckinRequestDTO;
+import org.ide.dbp_proyecto.dto.CheckinResponseDTO;
+import org.ide.dbp_proyecto.dto.LugarColeccionadoDTO;
 import org.ide.dbp_proyecto.entity.LugarColeccionado;
 import org.ide.dbp_proyecto.entity.PuntoInteres;
 import org.ide.dbp_proyecto.entity.User;
