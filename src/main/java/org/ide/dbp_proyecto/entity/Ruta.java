@@ -28,7 +28,7 @@ public class Ruta {
     @OrderBy("orden ASC")
     private List<Coordenada> trazadoGeografico = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "ruta_poi",
             joinColumns = @JoinColumn(name = "ruta_id"),

@@ -7,7 +7,11 @@ import org.ide.dbp_proyecto.service.EmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
+
 import java.time.format.DateTimeFormatter;
 
 @Component
@@ -18,14 +22,16 @@ public class AppEventListener {
 
     private final EmailService emailService;
 
-    @EventListener
+    @Async
+    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void onUsuarioRegistrado(UsuarioRegistradoEvent event) {
         User user = event.getUser();
         log.info("Evento: usuario registrado → {}", user.getEmail());
         emailService.enviarEmailBienvenida(user.getEmail(), user.getName());
     }
 
-    @EventListener
+    @Async
+    @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void onCheckinRealizado(CheckinRealizadoEvent event) {
         LugarColeccionado lugar = event.getLugarColeccionado();
         log.info("Evento: check-in realizado → usuario={} lugar={}",
