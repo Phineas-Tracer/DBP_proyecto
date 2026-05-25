@@ -33,10 +33,10 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
     }
 
-    //@ExceptionHandler(BadCredentialsException.class)
-    //public ResponseEntity<String> handleBadCredentials(BadCredentialsException ex) {
-    //    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
-    //}
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<String> handleBadCredentials(BadCredentialsException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciales incorrectas");
+    }
 
     @ExceptionHandler(GooglePlacesException.class)
     public ResponseEntity<String> handleGooglePlacesError(GooglePlacesException ex) {

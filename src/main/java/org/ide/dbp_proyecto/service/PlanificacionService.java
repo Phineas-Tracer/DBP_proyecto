@@ -16,6 +16,7 @@ import org.ide.dbp_proyecto.exception.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -31,9 +32,9 @@ public class PlanificacionService {
     private final RutaRepository rutaRepository;
     private final PoiImportService poiImportService;
 
-    public PlanificacionResponseDTO createPlanning(PlanificacionRequestDTO request, User usuario) {
-        if (usuario==null)
-            throw new BadCredentialsException("Usuario no autenticado");
+    public PlanificacionResponseDTO createPlanning(PlanificacionRequestDTO request, String email) {
+        User usuario = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         if (repository.existsByTitleAndUsuario(request.getTitulo(), usuario))
             throw new ConflictException("Ya existe una planificación con aquellas características");
         Planificacion plan = convertirDtoAEntidad(request);
@@ -56,16 +57,16 @@ public class PlanificacionService {
         return convertirEntidadADto(finalPlan);
     }
 
-    public Page<PlanificacionResponseDTO> getMyPlans(User usuario, Pageable pageable) {
-        if (usuario == null)
-            throw new BadCredentialsException("User not authorized");
+    public Page<PlanificacionResponseDTO> getMyPlans(String email, Pageable pageable) {
+        User usuario = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         Page<Planificacion> plansPage = repository.findByUsuario(usuario, pageable);
         return plansPage.map(this::convertirEntidadADto);
     }
 
-    public PlanificacionResponseDTO addPoisToPlanning(Long planId, AddPoisRequestDTO request, User usuario) {
-        if (usuario == null)
-            throw new BadCredentialsException("Usuario no autenticado");
+    public PlanificacionResponseDTO addPoisToPlanning(Long planId, AddPoisRequestDTO request, String email) {
+        User usuario = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         Planificacion plan = repository.findById(planId).orElseThrow(() -> new ResourceNotFoundException("Planificacion no encontrada"));
         if (!plan.getUsuario().getId().equals(usuario.getId()))
             throw new AccessDeniedException("No puedes modificar esta planificacion");
@@ -80,15 +81,14 @@ public class PlanificacionService {
         return convertirEntidadADto(plan);
     }
 
-    public PlanningExportDTO exportPlanning(Long planId, User usuario) {
-        if (usuario == null)
-            throw new BadCredentialsException("Usuario no autenticado");
+    public PlanningExportDTO exportPlanning(Long planId, String email) {
+        User usuario = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
         Planificacion plan = repository.findById(planId).orElseThrow(() -> new ResourceNotFoundException("Planificacion no encontrada"));
         if (!plan.getUsuario().getId().equals(usuario.getId()))
             throw new AccessDeniedException("No puedes exportar esta planificaccion");
         return convertirEntidadAExportDto(plan);
     }
-
 
     public PlanningExportDTO convertirEntidadAExportDto(Planificacion planificacion) {
         return modelMapper.map(planificacion, PlanningExportDTO.class);
