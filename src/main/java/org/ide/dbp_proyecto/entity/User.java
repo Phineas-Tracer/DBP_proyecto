@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.ide.dbp_proyecto.User.Role;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -34,5 +36,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToMany(mappedBy = "usuario")
+    private List<LugarColeccionado> lugaresColeccionados;
 
 }

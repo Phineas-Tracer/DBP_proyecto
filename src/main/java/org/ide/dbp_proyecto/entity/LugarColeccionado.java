@@ -1,6 +1,8 @@
 package org.ide.dbp_proyecto.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,8 +29,13 @@ public class LugarColeccionado {
     @JoinColumn(name = "poi_id")
     private PuntoInteres puntoDeInteres;
 
+    @NotBlank
     private LocalDateTime fecha;
+
+    @NotNull
     private Double latitudCheckin;
+
+    @NotNull
     private Double longitudCheckin;
 
 }
