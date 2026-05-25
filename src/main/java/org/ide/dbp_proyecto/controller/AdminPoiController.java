@@ -3,6 +3,7 @@ package org.ide.dbp_proyecto.controller;
 import org.ide.dbp_proyecto.dto.ImportacionPoiResponseDto;
 import org.ide.dbp_proyecto.service.PoiImportService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ public class AdminPoiController {
     }
 
     @PostMapping("/importar/{idRuta}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ImportacionPoiResponseDto> importarPoisParaRuta(
             @PathVariable Long idRuta,
             @RequestParam(required = false) Double radio,

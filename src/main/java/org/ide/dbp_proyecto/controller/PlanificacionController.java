@@ -3,7 +3,7 @@ package org.ide.dbp_proyecto.controller;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.ide.dbp_proyecto.dto.*;
-import org.ide.dbp_proyecto.Service.PlanificacionService;
+import org.ide.dbp_proyecto.service.PlanificacionService;
 import org.ide.dbp_proyecto.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

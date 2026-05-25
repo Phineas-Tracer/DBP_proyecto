@@ -2,9 +2,9 @@ package org.ide.dbp_proyecto.service;
 
 import lombok.RequiredArgsConstructor;
 import org.ide.dbp_proyecto.dto.*;
-import org.ide.dbp_proyecto.Repository.PlanificacionRepository;
-import org.ide.dbp_proyecto.Repository.RutaRepository;
-import org.ide.dbp_proyecto.Repository.UserRepository;
+import org.ide.dbp_proyecto.repository.PlanificacionRepository;
+import org.ide.dbp_proyecto.repository.RutaRepository;
+import org.ide.dbp_proyecto.repository.UserRepository;
 import org.ide.dbp_proyecto.entity.Planificacion;
 import org.ide.dbp_proyecto.entity.PuntoInteres;
 import org.ide.dbp_proyecto.entity.Ruta;

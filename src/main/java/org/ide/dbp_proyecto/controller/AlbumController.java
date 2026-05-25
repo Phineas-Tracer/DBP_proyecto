@@ -25,7 +25,7 @@ public class AlbumController {
     @PostMapping("/checkin")
     public ResponseEntity<CheckinResponseDTO> checkin(@Valid @RequestBody CheckinRequestDTO dto, Authentication auth) {
         CheckinResponseDTO response = albumService.realizarCheckin(dto, auth.getName());
-        return ResponseEntity.status(HttpStatus.OK).body(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/mi-coleccion")

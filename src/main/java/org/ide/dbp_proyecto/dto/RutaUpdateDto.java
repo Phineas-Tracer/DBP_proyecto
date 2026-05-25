@@ -5,8 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.ide.dbp_proyecto.Ruta.Dificultad;
-import org.ide.dbp_proyecto.Ruta.TipoPaisaje;
+import org.ide.dbp_proyecto.ruta.Dificultad;
+import org.ide.dbp_proyecto.ruta.TipoPaisaje;
 
 import java.util.List;
 

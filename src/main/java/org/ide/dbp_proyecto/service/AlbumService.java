@@ -1,9 +1,11 @@
 package org.ide.dbp_proyecto.service;
 
-import jakarta.transaction.Transactional;
-import org.ide.dbp_proyecto.Service.GeolocalizacionService;
+import org.ide.dbp_proyecto.event.CheckinRealizadoEvent;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.transaction.annotation.Transactional;
+import org.ide.dbp_proyecto.service.GeolocalizacionService;
 import org.ide.dbp_proyecto.exception.CheckinFueraDeRangoException;
-import org.ide.dbp_proyecto.Repository.PuntoInteresRepository;
+import org.ide.dbp_proyecto.repository.PuntoInteresRepository;
 import org.ide.dbp_proyecto.dto.CheckinRequestDTO;
 import org.ide.dbp_proyecto.dto.CheckinResponseDTO;
 import org.ide.dbp_proyecto.dto.LugarColeccionadoDTO;
@@ -12,8 +14,8 @@ import org.ide.dbp_proyecto.entity.PuntoInteres;
 import org.ide.dbp_proyecto.entity.User;
 import org.ide.dbp_proyecto.exception.ConflictException;
 import org.ide.dbp_proyecto.exception.ResourceNotFoundException;
-import org.ide.dbp_proyecto.Repository.LugarColeccionadoRepository;
-import org.ide.dbp_proyecto.Repository.UserRepository;
+import org.ide.dbp_proyecto.repository.LugarColeccionadoRepository;
+import org.ide.dbp_proyecto.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -30,14 +32,17 @@ public class AlbumService {
     private final UserRepository userRepository;
     private final PuntoInteresRepository poiRepository;
     private final ModelMapper modelMapper;
+    private final ApplicationEventPublisher eventPublisher;
 
-    public AlbumService(ModelMapper modelMapper, LugarColeccionadoRepository lugarColeccionadoRepository, PuntoInteresRepository poiRepository,
-                        GeolocalizacionService geolocalizacionService, UserRepository userRepository) {
+    public AlbumService(ModelMapper modelMapper, LugarColeccionadoRepository lugarColeccionadoRepository,
+                        PuntoInteresRepository poiRepository, GeolocalizacionService geolocalizacionService,
+                        UserRepository userRepository, ApplicationEventPublisher eventPublisher) {
         this.modelMapper = modelMapper;
         this.lugarColeccionadoRepository = lugarColeccionadoRepository;
         this.poiRepository = poiRepository;
         this.geolocalizacionService = geolocalizacionService;
         this.userRepository = userRepository;
+        this.eventPublisher = eventPublisher;
     }
 
     @Transactional
@@ -67,10 +72,10 @@ public class AlbumService {
 
         lugarColeccionadoRepository.save(coleccion);
 
-        // Mock para el Integrante 5 (Gamificación)
-        // Luego inyectar el real
+        // Publicar evento — listeners async enviarán email, evaluarán retos, etc.
+        eventPublisher.publishEvent(new CheckinRealizadoEvent(this, coleccion));
+
         List<String> recompensas = new ArrayList<>();
-        recompensas.add("Nuevo lugar descubierto: " + poi.getNombre());
 
         return new CheckinResponseDTO(
                 "Check-in exitoso",

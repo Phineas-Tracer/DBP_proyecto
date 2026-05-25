@@ -1,20 +1,16 @@
 package org.ide.dbp_proyecto.service;
 
 import lombok.RequiredArgsConstructor;
-import org.ide.dbp_proyecto.dto.PlanificacionRequestDTO;
-import org.ide.dbp_proyecto.dto.PlanificacionResponseDTO;
 import org.ide.dbp_proyecto.dto.RewardRequestDTO;
 import org.ide.dbp_proyecto.dto.RewardResponseDTO;
-import org.ide.dbp_proyecto.Repository.DesafioRepository;
-import org.ide.dbp_proyecto.Repository.RecompensaRepository;
-import org.ide.dbp_proyecto.Repository.UserRepository;
-import org.ide.dbp_proyecto.User.Role;
+import org.ide.dbp_proyecto.repository.DesafioRepository;
+import org.ide.dbp_proyecto.repository.RecompensaRepository;
+import org.ide.dbp_proyecto.repository.UserRepository;
+import org.ide.dbp_proyecto.user.Role;
 import org.ide.dbp_proyecto.entity.Desafio;
-import org.ide.dbp_proyecto.entity.Planificacion;
 import org.ide.dbp_proyecto.entity.Recompensa;
 import org.ide.dbp_proyecto.entity.User;
 import org.ide.dbp_proyecto.exception.AccessDeniedException;
-import org.ide.dbp_proyecto.exception.BadCredentialsException;
 import org.ide.dbp_proyecto.exception.ConflictException;
 import org.ide.dbp_proyecto.exception.ResourceNotFoundException;
 import org.modelmapper.ModelMapper;

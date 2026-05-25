@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.User;
+package org.ide.dbp_proyecto.user;
 
 public enum Role {
     USER, ADMIN;

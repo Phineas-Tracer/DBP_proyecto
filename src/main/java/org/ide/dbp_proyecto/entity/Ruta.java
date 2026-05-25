@@ -2,8 +2,8 @@ package org.ide.dbp_proyecto.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.ide.dbp_proyecto.Ruta.Dificultad;
-import org.ide.dbp_proyecto.Ruta.TipoPaisaje;
+import org.ide.dbp_proyecto.ruta.Dificultad;
+import org.ide.dbp_proyecto.ruta.TipoPaisaje;
 import java.util.ArrayList;
 import java.util.List;
 
