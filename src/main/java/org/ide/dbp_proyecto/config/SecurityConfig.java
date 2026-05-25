@@ -15,12 +15,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-
+    private final UserDetailsService userDetailsService;
     private final JwtFilter jwtFilter;
 
     @Bean
@@ -36,6 +38,14 @@ public class SecurityConfig {
     }
 
     @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider =
+                new DaoAuthenticationProvider(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
+    }
+
+    @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http
     ) throws Exception {
@@ -43,10 +53,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
 
-                // Permitir iframes desde el mismo origen (necesario para H2 console)
-                .headers(headers -> headers
-                        .frameOptions(frame -> frame.disable())
-                )
+                .authenticationProvider(authenticationProvider())
 
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(
