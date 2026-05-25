@@ -2,8 +2,8 @@ package org.ide.dbp_proyecto.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.ide.dbp_proyecto.Ruta.Dificultad;
-import org.ide.dbp_proyecto.Ruta.TipoPaisaje;
+import org.ide.dbp_proyecto.ruta.Dificultad;
+import org.ide.dbp_proyecto.ruta.TipoPaisaje;
 import org.ide.dbp_proyecto.dto.*;
 import org.ide.dbp_proyecto.service.RutaService;
 import org.springframework.data.domain.Pageable;

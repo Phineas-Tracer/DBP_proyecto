@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.Enums;
+package org.ide.dbp_proyecto.enums;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

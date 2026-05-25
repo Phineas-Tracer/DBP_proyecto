@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.ide.dbp_proyecto.dto.PagedResponseDto;
 import org.ide.dbp_proyecto.dto.RewardRequestDTO;
 import org.ide.dbp_proyecto.dto.RewardResponseDTO;
-import org.ide.dbp_proyecto.Service.RecompensaService;
+import org.ide.dbp_proyecto.service.RecompensaService;
 import org.ide.dbp_proyecto.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

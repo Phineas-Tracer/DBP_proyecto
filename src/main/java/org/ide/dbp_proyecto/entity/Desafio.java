@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.ide.dbp_proyecto.Enums.TipoDesafio;
+import org.ide.dbp_proyecto.enums.TipoDesafio;
 
 @Entity
 @Getter

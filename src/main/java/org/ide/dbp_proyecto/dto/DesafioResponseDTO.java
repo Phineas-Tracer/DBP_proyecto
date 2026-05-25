@@ -1,6 +1,6 @@
 package org.ide.dbp_proyecto.dto;
 
-import org.ide.dbp_proyecto.Enums.TipoDesafio;
+import org.ide.dbp_proyecto.enums.TipoDesafio;
 
 public class DesafioResponseDTO {
     private Long id;

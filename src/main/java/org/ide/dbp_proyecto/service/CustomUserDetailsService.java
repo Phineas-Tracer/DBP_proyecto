@@ -1,7 +1,7 @@
 package org.ide.dbp_proyecto.service;
 
 import lombok.RequiredArgsConstructor;
-import org.ide.dbp_proyecto.Repository.UserRepository;
+import org.ide.dbp_proyecto.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

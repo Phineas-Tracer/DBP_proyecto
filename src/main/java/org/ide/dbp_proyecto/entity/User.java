@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.ide.dbp_proyecto.User.Role;
+import org.ide.dbp_proyecto.user.Role;
 
 import java.util.ArrayList;
 import java.util.List;

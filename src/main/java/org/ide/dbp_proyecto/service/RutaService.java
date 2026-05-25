@@ -1,9 +1,9 @@
 package org.ide.dbp_proyecto.service;
 
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.ide.dbp_proyecto.Ruta.Dificultad;
-import org.ide.dbp_proyecto.Ruta.TipoPaisaje;
+import org.ide.dbp_proyecto.ruta.Dificultad;
+import org.ide.dbp_proyecto.ruta.TipoPaisaje;
 import org.ide.dbp_proyecto.dto.*;
 import org.ide.dbp_proyecto.entity.Coordenada;
 import org.ide.dbp_proyecto.entity.PuntoInteres;
