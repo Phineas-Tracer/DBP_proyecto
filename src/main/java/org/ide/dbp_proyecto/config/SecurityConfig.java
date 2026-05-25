@@ -3,7 +3,6 @@ package org.ide.dbp_proyecto.config;
 import lombok.RequiredArgsConstructor;
 import org.ide.dbp_proyecto.jwt.JwtFilter;
 import org.modelmapper.ModelMapper;
-import org.springframework.boot.security.autoconfigure.web.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,8 +38,8 @@ public class SecurityConfig {
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider =
-                new DaoAuthenticationProvider(userDetailsService);
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService); // Se inyecta por setter, no por constructor
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }

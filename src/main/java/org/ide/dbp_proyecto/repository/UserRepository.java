@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.Repository;
+package org.ide.dbp_proyecto.repository;
 import org.ide.dbp_proyecto.entity.Planificacion;
 import org.ide.dbp_proyecto.entity.User;
 import org.springframework.data.domain.Page;

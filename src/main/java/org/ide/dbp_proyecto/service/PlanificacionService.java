@@ -1,7 +1,7 @@
-package org.ide.dbp_proyecto.Service;
+package org.ide.dbp_proyecto.service;
 
 import lombok.RequiredArgsConstructor;
-import org.ide.dbp_proyecto.DTO.*;
+import org.ide.dbp_proyecto.dto.*;
 import org.ide.dbp_proyecto.Repository.PlanificacionRepository;
 import org.ide.dbp_proyecto.Repository.RutaRepository;
 import org.ide.dbp_proyecto.Repository.UserRepository;

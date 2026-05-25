@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.Service;
+package org.ide.dbp_proyecto.service;
 
 import lombok.RequiredArgsConstructor;
 import org.ide.dbp_proyecto.Repository.UserRepository;

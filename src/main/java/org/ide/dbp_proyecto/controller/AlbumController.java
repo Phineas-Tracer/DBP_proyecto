@@ -1,10 +1,10 @@
-package org.ide.dbp_proyecto.Controller;
+package org.ide.dbp_proyecto.controller;
 
 import jakarta.validation.Valid;
-import org.ide.dbp_proyecto.DTO.CheckinRequestDTO;
-import org.ide.dbp_proyecto.DTO.CheckinResponseDTO;
-import org.ide.dbp_proyecto.DTO.LugarColeccionadoDTO;
-import org.ide.dbp_proyecto.Service.AlbumService;
+import org.ide.dbp_proyecto.dto.CheckinRequestDTO;
+import org.ide.dbp_proyecto.dto.CheckinResponseDTO;
+import org.ide.dbp_proyecto.dto.LugarColeccionadoDTO;
+import org.ide.dbp_proyecto.service.AlbumService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;

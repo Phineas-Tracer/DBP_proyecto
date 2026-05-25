@@ -1,10 +1,10 @@
-package org.ide.dbp_proyecto.Controller;
+package org.ide.dbp_proyecto.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.ide.dbp_proyecto.DTO.PagedResponseDto;
-import org.ide.dbp_proyecto.DTO.RewardRequestDTO;
-import org.ide.dbp_proyecto.DTO.RewardResponseDTO;
+import org.ide.dbp_proyecto.dto.PagedResponseDto;
+import org.ide.dbp_proyecto.dto.RewardRequestDTO;
+import org.ide.dbp_proyecto.dto.RewardResponseDTO;
 import org.ide.dbp_proyecto.Service.RecompensaService;
 import org.ide.dbp_proyecto.entity.User;
 import org.springframework.data.domain.Page;

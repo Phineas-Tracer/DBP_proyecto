@@ -1,6 +1,6 @@
-package org.ide.dbp_proyecto.DTO.google;
+package org.ide.dbp_proyecto.dto.google;
 
-import org.ide.dbp_proyecto.DTO.google.LocationDto;
+import org.ide.dbp_proyecto.dto.google.LocationDto;
 
 public record CircleDto(
         LocationDto center,

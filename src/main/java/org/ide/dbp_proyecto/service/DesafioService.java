@@ -1,10 +1,10 @@
-package org.ide.dbp_proyecto.Service;
+package org.ide.dbp_proyecto.service;
 
 import lombok.RequiredArgsConstructor;
-import org.ide.dbp_proyecto.DTO.DesafioRequestDTO;
-import org.ide.dbp_proyecto.DTO.DesafioResponseDTO;
-import org.ide.dbp_proyecto.DTO.PlanificacionRequestDTO;
-import org.ide.dbp_proyecto.DTO.PlanificacionResponseDTO;
+import org.ide.dbp_proyecto.dto.DesafioRequestDTO;
+import org.ide.dbp_proyecto.dto.DesafioResponseDTO;
+import org.ide.dbp_proyecto.dto.PlanificacionRequestDTO;
+import org.ide.dbp_proyecto.dto.PlanificacionResponseDTO;
 import org.ide.dbp_proyecto.Repository.DesafioRepository;
 import org.ide.dbp_proyecto.Repository.UserRepository;
 import org.ide.dbp_proyecto.User.Role;

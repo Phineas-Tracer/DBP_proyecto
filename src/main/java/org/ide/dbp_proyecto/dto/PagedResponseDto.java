@@ -1,15 +1,11 @@
-package org.ide.dbp_proyecto.DTO;
-
-import lombok.Getter;
-import org.springframework.data.domain.Page;
-
 package org.ide.dbp_proyecto.dto;
-
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Page;
 import java.util.List;
 
 @Getter
+@NoArgsConstructor
 public class PagedResponseDto<T> {
 
     private List<T> content;
@@ -23,5 +19,4 @@ public class PagedResponseDto<T> {
         this.size = pageResult.getSize();
         this.totalElements = pageResult.getTotalElements();
     }
-}
 }
