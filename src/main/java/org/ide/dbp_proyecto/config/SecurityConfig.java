@@ -78,6 +78,11 @@ public class SecurityConfig {
                         .permitAll()
                         // --------------------------------------------------------
 
+                        // ⚠️ TEMPORAL — abrir rutas para testing. Quitar antes de subir.
+                        .requestMatchers("/api/rutas/**")
+                        .permitAll()
+                        // --------------------------------------------------------
+
                         .anyRequest()
                         .authenticated()
                 )
