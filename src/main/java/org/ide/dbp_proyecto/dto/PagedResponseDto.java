@@ -1,3 +1,8 @@
+package org.ide.dbp_proyecto.DTO;
+
+import lombok.Getter;
+import org.springframework.data.domain.Page;
+
 package org.ide.dbp_proyecto.dto;
 
 import lombok.Getter;
@@ -18,4 +23,5 @@ public class PagedResponseDto<T> {
         this.size = pageResult.getSize();
         this.totalElements = pageResult.getTotalElements();
     }
+}
 }

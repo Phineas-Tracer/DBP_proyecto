@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.repository;
+package org.ide.dbp_proyecto.Repository;
 
 import org.ide.dbp_proyecto.Ruta.Dificultad;
 import org.ide.dbp_proyecto.Ruta.TipoPaisaje;

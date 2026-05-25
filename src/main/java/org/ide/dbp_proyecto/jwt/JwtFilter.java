@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -28,6 +29,15 @@ public class JwtFilter
             HttpServletResponse response,
             FilterChain filterChain
     ) throws ServletException, IOException {
+
+        String path = request.getServletPath();
+        if (
+                path.equals("/user/login") ||
+                        path.equals("/user/register")
+        ) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
         final String authHeader =
                 request.getHeader("Authorization");
@@ -60,6 +70,10 @@ public class JwtFilter
                                 null,
                                 userDetails.getAuthorities()
                         );
+                authToken.setDetails(
+                        new WebAuthenticationDetailsSource()
+                                .buildDetails(request)
+                );
 
                 SecurityContextHolder.getContext()
                         .setAuthentication(authToken);

@@ -1,17 +1,18 @@
-package org.ide.dbp_proyecto.service;
+package org.ide.dbp_proyecto.Service;
 
-import org.ide.dbp_proyecto.dto.SugerenciaPoiDTO;
+import org.ide.dbp_proyecto.Service.GooglePlacesService;
+import org.ide.dbp_proyecto.DTO.SugerenciaPoiDTO;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.ide.dbp_proyecto.dto.ImportacionPoiResponseDto;
-import org.ide.dbp_proyecto.dto.google.GooglePlaceDto;
+import org.ide.dbp_proyecto.DTO.ImportacionPoiResponseDto;
+import org.ide.dbp_proyecto.DTO.google.GooglePlaceDto;
 import org.ide.dbp_proyecto.entity.Categoria;
 import org.ide.dbp_proyecto.entity.PuntoInteres;
 import org.ide.dbp_proyecto.entity.Ruta;
 import org.ide.dbp_proyecto.exception.ResourceNotFoundException;
-import org.ide.dbp_proyecto.repository.CategoriaRepository;
-import org.ide.dbp_proyecto.repository.PuntoInteresRepository;
-import org.ide.dbp_proyecto.repository.RutaRepository;
+import org.ide.dbp_proyecto.Repository.CategoriaRepository;
+import org.ide.dbp_proyecto.Repository.PuntoInteresRepository;
+import org.ide.dbp_proyecto.Repository.RutaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

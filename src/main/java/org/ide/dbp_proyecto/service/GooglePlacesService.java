@@ -1,6 +1,6 @@
-package org.ide.dbp_proyecto.service;
+package org.ide.dbp_proyecto.Service;
 
-import org.ide.dbp_proyecto.dto.google.*;
+import org.ide.dbp_proyecto.DTO.google.*;
 import org.ide.dbp_proyecto.exception.GooglePlacesException;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +8,13 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
+import org.ide.dbp_proyecto.DTO.google.GooglePlaceDto;
+import org.ide.dbp_proyecto.DTO.google.NearbySearchRequestDto;
+import org.ide.dbp_proyecto.DTO.google.LocationRestrictionDto;
+import org.ide.dbp_proyecto.DTO.google.LocationDto;
+import org.ide.dbp_proyecto.DTO.google.CircleDto;
+import org.ide.dbp_proyecto.DTO.google.GooglePlacesResponseDto;
+
 
 import org.slf4j.Logger;
 

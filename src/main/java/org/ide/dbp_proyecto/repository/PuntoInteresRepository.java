@@ -1,4 +1,4 @@
-package org.ide.dbp_proyecto.repository;
+package org.ide.dbp_proyecto.Repository;
 
 import org.ide.dbp_proyecto.entity.PuntoInteres;
 import org.springframework.data.jpa.repository.JpaRepository;

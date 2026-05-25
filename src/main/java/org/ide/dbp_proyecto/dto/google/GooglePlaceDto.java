@@ -1,6 +1,8 @@
-package org.ide.dbp_proyecto.dto.google;
+package org.ide.dbp_proyecto.DTO.google;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.ide.dbp_proyecto.DTO.google.DisplayNameDto;
+import org.ide.dbp_proyecto.DTO.google.LocationDto;
 
 import java.util.List;
 
